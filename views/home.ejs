@@ -5,9 +5,13 @@
 
 <% posts.forEach(function(element){%>
   <h1><%=element.title%></h1>
-  <p><%=element.content%></p>
+  <p>
+    <%=element.content.slice(0,300)%> ...
+    <a href="/posts/<%=element.title%>">Read More</a>
+  </p>
+
 <% }); %>
 
-<a href="/compose">Go to Compose</a>
+<a class="btn btn-lg btn-primary" href="/compose">Go to Compose</a>
 
 <%- include('partials/footer'); -%>

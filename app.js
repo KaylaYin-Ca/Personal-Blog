@@ -58,16 +58,19 @@ app.post("/compose",function(req,res){
   res.redirect("/");
 });
 
-app.get("/posts/:diary",function(req,res){
+app.get("/posts/:postName",function(req,res){
 
-  const pathParam = _.lowerCase(req.params.diary);
+  const pathParam = _.lowerCase(req.params.postName);
   posts.forEach(function(element){
-    const diaryTitle = _.lowerCase(element.title);
-    if (pathParam === diaryTitle){
+    const postName = _.lowerCase(element.title);
+    if (pathParam === postName){
       console.log("Match Found!");
+      res.render("post",{
+        post : element
+      });
     }
   });
-  // res.render("compose");
+
 });
 
 
